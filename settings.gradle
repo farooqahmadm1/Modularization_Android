@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Modularization_Android"
+include(":app")
+include(":core")
+include(":common")
+include(":rss")
+include ':rss:domain'
+include ':rss:data'
+include ':rss:ui-feeds'
+include ':rss:ui-stories'

@@ -1,0 +1,98 @@
+
+// build.gradle for android libraries that contain UI
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-parcelize"
+apply plugin: "dagger.hilt.android.plugin"
+
+android {
+    compileSdkVersion Android.compileSdk
+    buildToolsVersion Android.buildTools
+
+    defaultConfig {
+        minSdkVersion Android.minSdk
+        targetSdkVersion Android.targetSdk
+        versionCode Android.versionCode
+        versionName Android.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
+}
+
+dependencies{
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appCompat
+    implementation AndroidX.lifecycleVmKtx
+    implementation AndroidX.lifecycleRtKtx
+
+    api platform(Compose.bom)
+    api Compose.activity
+    api Compose.material
+    api Compose.toolingPreview
+    debugImplementation Compose.debugTooling
+    api Compose.icons
+    api Compose.iconsExtended
+    api Compose.liveData
+    api Compose.rxJava
+    api Compose.viewModel
+    api Compose.hiltNavigation
+    api Navigation.navigationCompose
+
+    /**
+     * Kotlin
+     */
+    implementation Kotlin.kotlinStdlib
+    implementation Kotlinx.datetime
+    implementation Kotlinx.coroutinesCore
+    implementation Kotlinx.coroutinesAndroid
+    testImplementation Kotlinx.coroutinesTest
+    androidTestImplementation Kotlinx.coroutinesTest
+
+    /**
+     * Hilt
+     */
+    implementation Hilt.android
+    kapt Hilt.compiler
+    androidTestImplementation HiltTest.hiltAndroidTesting
+    kaptAndroidTest HiltTest.hiltKaptTesting
+
+    /**
+     * Logger
+     */
+    implementation Depends.timber
+
+}
