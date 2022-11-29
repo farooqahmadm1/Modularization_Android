@@ -3,6 +3,7 @@ package com.farooq.rss.ui_feeds
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
@@ -25,25 +26,24 @@ fun FeedsScreen(
     viewModel: FeedsViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(title = { Text(text = "Feeds") })
-        }
-    ) {
-        val state = viewModel.state.value
-        Box(modifier = Modifier.fillMaxSize()) {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(state.feeds) { feed ->
-                    FeedListItem(feed = feed, onItemClick = {
-                        navController.navigate(Screen.StoriesScreen.route + "/${feed.category}")
-                    })
+        topBar = { TopAppBar(title = { Text(text = "Feeds") }) },
+        content = {
+            val state = viewModel.state.value
+            Box(modifier = Modifier.fillMaxSize().padding(it)) {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(state.feeds) { feed ->
+                        FeedListItem(feed = feed, onItemClick = {
+                            navController.navigate(Screen.StoriesScreen.route + "/${feed.category}")
+                        })
+                    }
+                }
+                if (state.error.isNotBlank()) {
+                    LocalContext.current.showToast(state.error)
+                }
+                if (state.isLoading) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 }
             }
-            if (state.error.isNotBlank()) {
-                LocalContext.current.showToast(state.error)
-            }
-            if (state.isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
         }
-    }
+    )
 }

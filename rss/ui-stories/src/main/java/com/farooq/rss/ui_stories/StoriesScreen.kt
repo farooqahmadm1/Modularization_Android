@@ -34,32 +34,35 @@ fun StoriesScreen(
                     navController.popBackStack()
                 })
             })
-        }
-    ) {
-        val state = viewModel.state.value
-        Box(modifier = Modifier.fillMaxSize()) {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(state.stories) { story ->
-                    StoryListItem(story = story, onItemClick = {
+        },
+        content = {
+            val state = viewModel.state.value
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .padding(it)) {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(state.stories) { story ->
+                        StoryListItem(story = story, Modifier.padding(start = 16.dp, bottom = 16.dp, end = 16.dp), onItemClick = {
 
-                    })
+                        })
+                    }
+                }
+                if (state.error.isNotBlank()) {
+                    Text(
+                        text = state.error,
+                        color = MaterialTheme.colorScheme.error,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp)
+                            .align(Alignment.Center)
+                    )
+                }
+                if (state.isLoading) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 }
             }
-            if (state.error.isNotBlank()) {
-                Text(
-                    text = state.error,
-                    color = MaterialTheme.colorScheme.error,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                        .align(Alignment.Center)
-                )
-            }
-            if (state.isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
         }
-    }
+    )
 
 }

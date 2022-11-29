@@ -6,4 +6,5 @@ apply {
 dependencies {
     "implementation"(project(Modules.components))
     "implementation"(project(Modules.rssDomain))
+    "implementation"(Coil.coilCompose)
 }
