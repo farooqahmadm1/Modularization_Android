@@ -14,10 +14,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.eddress.common.presentation.theme.spacing
 import com.farooq.rss.ui_stories.components.StoryListItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -29,17 +31,32 @@ fun StoriesScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Stories", style = MaterialTheme.typography.titleLarge) }, navigationIcon = {
-                Icon(imageVector = Icons.Default.ArrowBackIosNew, contentDescription = "back icon", modifier = Modifier.clickable {
-                    navController.popBackStack()
-                })
-            })
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "${viewModel.state.value.name} Stories",
+                        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                },
+                navigationIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBackIosNew, contentDescription = "back icon",
+                        modifier = Modifier
+                            .clickable { navController.popBackStack() }
+                            .padding(MaterialTheme.spacing.verySmall)
+                    )
+                }
+            )
         },
         content = {
             val state = viewModel.state.value
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .padding(it)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it)
+            ) {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.stories) { story ->
                         StoryListItem(story = story, Modifier.padding(start = 16.dp, bottom = 16.dp, end = 16.dp), onItemClick = {

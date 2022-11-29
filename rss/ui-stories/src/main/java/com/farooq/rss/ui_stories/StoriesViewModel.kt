@@ -26,6 +26,7 @@ class StoriesViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(Constant.PARAM_FEED_CATEGORY)?.let { category ->
+            _state.value = state.value.copy(name = category)
             onEvent(StoriesEvent.GetStories(category))
         }
     }
@@ -52,6 +53,7 @@ sealed class StoriesEvent {
 }
 
 data class StoriesUiState(
+    val name : String = "",
     val stories: List<Story> = emptyList(),
     val error: String = "",
     val isLoading: Boolean = false
