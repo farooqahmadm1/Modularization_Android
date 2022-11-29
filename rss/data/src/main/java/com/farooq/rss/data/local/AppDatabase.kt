@@ -11,7 +11,7 @@ import com.farooq.rss.data.local.model.StoriesEntity
     entities = [
         StoriesEntity::class,
         FeedsEntity::class
-    ], exportSchema = false, version = 1
+    ], exportSchema = false, version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 

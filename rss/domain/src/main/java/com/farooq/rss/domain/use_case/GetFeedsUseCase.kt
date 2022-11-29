@@ -22,10 +22,10 @@ class GetFeedsUseCase @Inject constructor(
         } catch (e: Exception) {
             trySend(networkExceptionHandling.execute(e))
         } finally {
+            trySend(Resource.Loading(ProgressBarState.Idle))
             feedRepo.getFeeds().collectLatest { result ->
                 trySend(Resource.Success(result))
             }
-            trySend(Resource.Loading(ProgressBarState.Idle))
         }
         awaitClose {
             channel.close()

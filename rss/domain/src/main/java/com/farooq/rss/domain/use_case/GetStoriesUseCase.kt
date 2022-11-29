@@ -21,10 +21,10 @@ class GetStoriesUseCase @Inject constructor(
         } catch (e: Exception) {
             trySend(networkExceptionHandling.execute(e))
         } finally {
+            trySend(Resource.Loading(ProgressBarState.Idle))
             storiesRepo.getStories(category).collectLatest { result ->
                 trySend(Resource.Success(result))
             }
-            trySend(Resource.Loading(ProgressBarState.Idle))
         }
         awaitClose {
             channel.close()

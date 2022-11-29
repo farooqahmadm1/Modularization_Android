@@ -17,7 +17,7 @@ include(":app")
 include(":core")
 include(":common")
 include(":rss")
-include ':rss:domain'
-include ':rss:data'
-include ':rss:ui-feeds'
-include ':rss:ui-stories'
+include(":rss:domain")
+include(":rss:data")
+include(":rss:ui-feeds")
+include(":rss:ui-stories")
