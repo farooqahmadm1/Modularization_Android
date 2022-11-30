@@ -1,7 +1,7 @@
 object Config {
 
     object Application {
-        const val applicationId = "com.farooq.greyp_task"
+        const val applicationId = "com.farooq.module_demo"
         const val BASE_URL = "\"https://www.index.hr/\""
     }
 
