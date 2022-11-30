@@ -8,7 +8,7 @@ import com.eddress.common.presentation.theme.AppTheme
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     AppTheme {
-        Surface(color = MaterialTheme.colorScheme.surface) {
+        Surface(color = MaterialTheme.colorScheme.background) {
             content()
         }
     }

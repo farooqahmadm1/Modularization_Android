@@ -3,18 +3,19 @@ package com.farooq.rss.ui_feeds
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.eddress.common.presentation.components.handleErrorAndLoading
 import com.eddress.common.presentation.navigation.Screen
-import com.eddress.common.presentation.util.showToast
 import com.farooq.rss.ui_feeds.components.FeedListItem
 
 
@@ -26,10 +27,24 @@ fun FeedsScreen(
     viewModel: FeedsViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = "Feeds") }) },
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Feeds",
+                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                })
+        },
         content = {
             val state = viewModel.state.value
-            Box(modifier = Modifier.fillMaxSize().padding(it)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it)
+            ) {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.feeds) { feed ->
                         FeedListItem(feed = feed, onItemClick = {
@@ -37,12 +52,7 @@ fun FeedsScreen(
                         })
                     }
                 }
-                if (state.error.isNotBlank()) {
-                    LocalContext.current.showToast(state.error)
-                }
-                if (state.isLoading) {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                }
+                handleErrorAndLoading(isLoading = state.isLoading, error = state.error)
             }
         }
     )

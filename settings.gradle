@@ -15,7 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "Modularization_Android"
 include(":app")
 include(":core")
-include(":common")
+include(":android-components")
 include(":rss")
 include(":rss:domain")
 include(":rss:data")

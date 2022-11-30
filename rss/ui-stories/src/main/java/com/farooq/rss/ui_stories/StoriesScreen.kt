@@ -1,7 +1,6 @@
 package com.farooq.rss.ui_stories
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,14 +11,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.eddress.common.presentation.theme.spacing
+import com.eddress.common.presentation.components.handleErrorAndLoading
 import com.farooq.rss.ui_stories.components.StoryListItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,18 +33,15 @@ fun StoriesScreen(
                 title = {
                     Text(
                         text = "${viewModel.state.value.name} Stories",
-                        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
                 navigationIcon = {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBackIosNew, contentDescription = "back icon",
-                        modifier = Modifier
-                            .clickable { navController.popBackStack() }
-                            .padding(MaterialTheme.spacing.verySmall)
-                    )
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(imageVector = Icons.Default.ArrowBackIosNew, contentDescription = "back icon", tint = MaterialTheme.colorScheme.primary)
+                    }
                 }
             )
         },
@@ -64,20 +59,7 @@ fun StoriesScreen(
                         })
                     }
                 }
-                if (state.error.isNotBlank()) {
-                    Text(
-                        text = state.error,
-                        color = MaterialTheme.colorScheme.error,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(20.dp)
-                            .align(Alignment.Center)
-                    )
-                }
-                if (state.isLoading) {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                }
+                handleErrorAndLoading(isLoading = state.isLoading, error = state.error)
             }
         }
     )

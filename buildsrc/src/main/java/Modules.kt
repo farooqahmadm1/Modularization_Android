@@ -2,7 +2,7 @@ object Modules {
 
     const val app = ":app"
     const val core = ":core"
-    const val components = ":common"
+    const val components = ":android-components"
     const val constants = ":constants"
     const val rss = ":rss"
     const val rssData = ":rss:data"
