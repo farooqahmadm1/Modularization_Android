@@ -8,6 +8,7 @@ Multi-module demo app that gets data from a RSS Url's.
 - Retrofit
 - Kotlin Coroutines
 - JetPack (Material 3, ViewModel and etc.)
+- Kotlin DSL
 
 # Module Design
 
@@ -21,3 +22,20 @@ Multi-module demo app that gets data from a RSS Url's.
 | [rss-ui-stories](/rss/ui-stories/)      | Android Library      | UI components for the HeroDetail screen.                         |
 | [constants](/constants/)          | Java/Kotlin Library  | Random constants.                                                |
 | [android-components](/android-components/)         | Android Library      | Common Composables,Theme, and Android Classes.      
+
+# build.gradle Files
+There are 3 types of build.gradle files.
+1. android application (app module)
+1. android-library-build.gradle
+    - For Android library modules.
+1. build.gradle.kts (pure java and kotlin library module)
+
+# API
+https://www.index.hr/rss
+
+# Dependency 
+Data Module ------------> Domain Module <------------- UIModule <------------------ AppModule
+
+# Data Flow
+UniDirectional Flow
+
