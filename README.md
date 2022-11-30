@@ -9,6 +9,7 @@ Multi-module demo app that gets data from a RSS Url's.
 - Kotlin Coroutines
 - JetPack (Material 3, ViewModel and etc.)
 - Kotlin DSL
+- Navgiation Component Compose
 
 # Module Design
 
