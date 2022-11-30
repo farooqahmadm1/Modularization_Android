@@ -1,6 +1,8 @@
 package com.farooq.core.utils
 
 import android.util.Patterns
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.util.regex.Matcher
 
 
@@ -15,4 +17,8 @@ fun String.extractUrl(): List<String> {
         }
     }
     return links
+}
+
+fun String.encodeUrl(): String {
+    return URLEncoder.encode(this, StandardCharsets.UTF_8.toString())
 }

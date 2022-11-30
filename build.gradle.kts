@@ -14,6 +14,7 @@ buildscript {
         classpath(Build.kotlinGradlePlugin)
         classpath(Build.navigationSafe)
         classpath(Build.hiltAndroid)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
     }
 }
 

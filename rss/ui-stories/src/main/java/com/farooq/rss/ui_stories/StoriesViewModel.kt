@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.farooq.constants.Constant
 import com.farooq.core.domain.ProgressBarState
 import com.farooq.core.domain.Resource
-import com.farooq.core.utils.Constant
 import com.farooq.rss.domain.model.Story
 import com.farooq.rss.domain.use_case.GetStoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

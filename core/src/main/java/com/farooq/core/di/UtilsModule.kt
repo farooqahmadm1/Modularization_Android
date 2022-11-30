@@ -18,11 +18,6 @@ class UtilsModule {
     }
 
     @Provides
-    fun provideJsonParser(gson: Gson): com.farooq.core.utils.JsonParser {
-        return com.farooq.core.utils.GsonParser(gson)
-    }
-
-    @Provides
     fun provideLogger(): Logger {
         return Logger("Grep APP", BuildConfig.DEBUG)
     }
