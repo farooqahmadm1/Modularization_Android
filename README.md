@@ -3,13 +3,13 @@ Multi-module demo app that gets data from a RSS Url's.
 
 # Technologies
 - Compose
-- Clean Architechure + Modularization + MVI
+- Clean Architecture + Modularization + MVI
 - Room 
 - Retrofit
 - Kotlin Coroutines
 - JetPack (Material 3, ViewModel and etc.)
 - Kotlin DSL
-- Navgiation Component Compose
+- Navigation Component Compose
 
 # Module Design
 
