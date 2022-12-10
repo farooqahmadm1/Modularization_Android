@@ -12,4 +12,4 @@ jobs:
       - name: Grant Execution Permission
         run: chmod +x ./gradlew
       - name: Assemble Debug
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --kotlin-dsl
