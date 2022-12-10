@@ -1,1 +1,15 @@
+name: Android Pipeline
+on:
+  push:
+    branches:
+      - master
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Grant Execution Permission
+        run: chmod +x ./gradlew
+      - name: Assemble Debug
+        run: ./gradlew assembleDebug
