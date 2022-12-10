@@ -13,6 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Modularization_Android"
+
 include(":app")
 include(":core")
 include(":android-components")
@@ -22,3 +23,4 @@ include(":rss:data")
 include(":rss:ui-feeds")
 include(":rss:ui-stories")
 include ':constants'
+includeBuild('.')
