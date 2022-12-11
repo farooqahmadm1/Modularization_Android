@@ -35,7 +35,7 @@ There are 3 types of build.gradle files.
 https://www.index.hr/rss
 
 # Dependency 
-Data Module ------------> Domain Module <------------- UIModule <------------------ AppModule
+Data Module ------------> Domain Module <------------- UIModule
 
 # Data Flow
 UniDirectional Flow
