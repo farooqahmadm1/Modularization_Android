@@ -13,10 +13,10 @@ jobs:
         run: chmod +x ./gradlew
       - name: Assemble Debug
         run: ./gradlew assembleDebug
-      - name: Install Google Cloud SDK
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@latest
-        with:
-          service_account_email: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL }}
-          service_account_key: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
-      - name: Deploy to Firebase
-        run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/app-debug.apk --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+#      - name: Install Google Cloud SDK
+#        uses: GoogleCloudPlatform/github-actions/setup-gcloud@latest
+#        with:
+#          service_account_email: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL }}
+#          service_account_key: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
+#      - name: Deploy to Firebase
+#        run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/app-debug.apk --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
