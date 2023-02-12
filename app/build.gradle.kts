@@ -61,11 +61,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":android-components"))
+    implementation(project(Modules.components))
     implementation(project(Modules.ui_rssFeeds))
     implementation(project(Modules.ui_rssStories))
     implementation(project(Modules.rssData))
-    implementation(project(":constants"))
+    implementation(project(Modules.constants))
 
     /**
      * GOOGLE
