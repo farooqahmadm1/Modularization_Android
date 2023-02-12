@@ -13,7 +13,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Modularization_Android"
 
 include(":app")
 include(":core")
@@ -24,4 +23,3 @@ include(":rss:data")
 include(":rss:ui-feeds")
 include(":rss:ui-stories")
 include ':constants'
-includeBuild('.')

@@ -1,22 +1,30 @@
-name: Android Pipeline
+name: CI
+
 on:
   push:
     branches:
       - master
 
 jobs:
-  build:
+  generate-dependency-graph:
+    name: Generate Dependency Graph
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Grant Execution Permission
-        run: chmod +x ./gradlew
-      - name: Assemble Debug
-        run: ./gradlew assembleDebug
-#      - name: Install Google Cloud SDK
-#        uses: GoogleCloudPlatform/github-actions/setup-gcloud@latest
-#        with:
-#          service_account_email: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL }}
-#          service_account_key: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
-#      - name: Deploy to Firebase
-#        run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/app-debug.apk --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Generate Dependency Graph
+        run: ./gradlew projectDependencyGraph
+
+      - name: Commmit
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git diff --quiet && git diff --staged --quiet || git commit -am 'Update dependency graph'
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
