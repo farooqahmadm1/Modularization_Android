@@ -4,7 +4,7 @@ apply {
 
 
 dependencies {
-    "implementation"(project(Modules.components))
+    "implementation"(project(":android-components"))
     "implementation"(project(Modules.rssDomain))
     "implementation"(Coil.coilCompose)
 }

@@ -61,7 +61,7 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.components))
+    implementation(project(":android-components"))
     implementation(project(Modules.ui_rssFeeds))
     implementation(project(Modules.ui_rssStories))
     implementation(project(Modules.rssData))
@@ -75,7 +75,7 @@ dependencies {
     implementation(Google.gson)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha02")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha06")
     testImplementation(Google.truth)
     androidTestImplementation(Google.truth)
 

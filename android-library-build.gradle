@@ -1,6 +1,3 @@
-
-// build.gradle for android libraries that contain UI
-
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -14,10 +11,6 @@ android {
     defaultConfig {
         minSdkVersion Android.minSdk
         targetSdkVersion Android.targetSdk
-        versionCode Android.versionCode
-        versionName Android.versionName
-        multiDexEnabled true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
