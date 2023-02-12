@@ -1,0 +1,27 @@
+digraph "Modularization_Android.app" {
+
+splines  = ortho;
+fontname = "Inconsolata";
+
+node [colorscheme = ylgnbu4];
+edge [colorscheme = dark28, dir = both];
+
+"Modularization_Android.android-components" [shape = record, label = "{ Modularization_Android.android-components |  }"];
+"Modularization_Android.app"                [shape = record, label = "{ Modularization_Android.app |  }"];
+"Modularization_Android.constants"          [shape = record, label = "{ Modularization_Android.constants |  }"];
+"Modularization_Android.core"               [shape = record, label = "{ Modularization_Android.core |  }"];
+"Modularization_Android.rss.data"           [shape = record, label = "{ Modularization_Android.rss.data |  }"];
+"Modularization_Android.rss.domain"         [shape = record, label = "{ Modularization_Android.rss.domain |  }"];
+"Modularization_Android.rss.ui-feeds"       [shape = record, label = "{ Modularization_Android.rss.ui-feeds |  }"];
+"Modularization_Android.rss.ui-stories"     [shape = record, label = "{ Modularization_Android.rss.ui-stories |  }"];
+
+"Modularization_Android.android-components" -> "Modularization_Android.app"                [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.android-components" -> "Modularization_Android.rss.ui-feeds"       [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.android-components" -> "Modularization_Android.rss.ui-stories"     [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.constants"          -> "Modularization_Android.android-components" [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.core"               -> "Modularization_Android.rss.domain"         [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.rss.domain"         -> "Modularization_Android.rss.data"           [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.rss.domain"         -> "Modularization_Android.rss.ui-feeds"       [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+"Modularization_Android.rss.domain"         -> "Modularization_Android.rss.ui-stories"     [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+
+}
