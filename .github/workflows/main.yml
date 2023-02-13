@@ -19,11 +19,11 @@ jobs:
       - name: Generate Dependency Graph
         run: ./gradlew projectDependencyGraph
 
-      - name: Commmit
+      - name: Commit
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git diff --quiet && git diff --staged --quiet || git commit -am 'Update dependency graph'
+          git commit -am 'Update dependency graph'
       - name: Push
         uses: ad-m/github-push-action@master
         with:
