@@ -41,4 +41,5 @@ Data Module ------------> Domain Module <------------- UIModule
 UniDirectional Flow
 
 
+# Module Dependency Graph Diagram
 ![](gradle/dependency-graph/project.dot.png)
