@@ -23,6 +23,7 @@ jobs:
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
+#          git add gradle/dependency-graph/project.dot.png
           git commit -am 'Update dependency graph'
       - name: Push
         uses: ad-m/github-push-action@master
