@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.TaskAction
-
 object Build {
     private const val androidBuildToolsVersion = "7.3.1"
     const val androidBuildTools = "com.android.tools.build:gradle:$androidBuildToolsVersion"

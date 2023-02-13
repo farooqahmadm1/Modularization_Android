@@ -3,6 +3,6 @@ apply {
 }
 dependencies {
     "implementation"(project(":android-components"))
-    "implementation"(project(Modules.rssDomain))
-    "implementation"(Coil.coilCompose)
+    "implementation"(project(":rss:domain"))
+    "implementation"("io.coil-kt:coil-compose:2.2.0")
 }
