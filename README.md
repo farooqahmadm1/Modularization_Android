@@ -41,4 +41,4 @@ Data Module ------------> Domain Module <------------- UIModule
 UniDirectional Flow
 
 
-[app](/app.uml)
+![](gradle/dependency-graph/project.dot.png)
