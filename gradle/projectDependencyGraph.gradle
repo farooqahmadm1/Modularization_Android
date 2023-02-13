@@ -57,7 +57,7 @@ task projectDependencyGraph {
                             def graphKey = new Tuple2<Project, Project>(project, dependency)
                             def traits = dependencies.computeIfAbsent(graphKey) { new ArrayList<String>() }
 
-                            if (config.name.toLowerCase().endsWith('implementation')) {
+                            if (config.name.toLowerCase().endsWith('implementation') || config.name.toLowerCase().endsWith('api')) {
                                 traits.add('style=dotted')
                             }
                         }
