@@ -5,28 +5,9 @@ digraph {
 
   # Projects
 
-  ":android-components" [fillcolor="#baffc9"];
-  ":app" [fillcolor="#baffc9"];
-  ":constants" [fillcolor="#ffb3ba"];
-  ":core" [fillcolor="#baffc9"];
-  ":rss:data" [fillcolor="#baffc9"];
-  ":rss:domain" [fillcolor="#baffc9"];
-  ":rss:ui-feeds" [fillcolor="#baffc9"];
-  ":rss:ui-stories" [fillcolor="#baffc9"];
 
   {rank = same;}
 
   # Dependencies
 
-  ":android-components" -> ":constants"
-  ":app" -> ":android-components" [style=dotted]
-  ":app" -> ":rss:ui-feeds" [style=dotted]
-  ":app" -> ":rss:ui-stories" [style=dotted]
-  ":app" -> ":rss:data" [style=dotted]
-  ":rss:data" -> ":rss:domain" [style=dotted]
-  ":rss:domain" -> ":core"
-  ":rss:ui-feeds" -> ":android-components" [style=dotted]
-  ":rss:ui-feeds" -> ":rss:domain" [style=dotted]
-  ":rss:ui-stories" -> ":android-components" [style=dotted]
-  ":rss:ui-stories" -> ":rss:domain" [style=dotted]
 }
