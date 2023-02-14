@@ -50,15 +50,16 @@ task projectDependencyGraph {
                         .withType(ProjectDependency)
                         .collect { it.dependencyProject }
                         .each { dependency ->
-                            if (config.name.toLowerCase().endsWith('implementation') && config.name.toLowerCase().endsWith('api')) {
+                            if ((dependency as Project).path != project.path) {
                                 projects.add(project)
                                 projects.add(dependency)
                                 rootProjects.remove(dependency)
 
                                 def graphKey = new Tuple2<Project, Project>(project, dependency)
                                 def traits = dependencies.computeIfAbsent(graphKey) { new ArrayList<String>() }
-
-                                traits.add('style=dotted')
+                                if (config.name.toLowerCase().endsWith('implementation')) {
+                                    traits.add('style=dotted')
+                                }
                             }
                         }
             }
