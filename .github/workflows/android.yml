@@ -17,3 +17,12 @@ jobs:
         with:
           name: app-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.5
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          releaseNotesFile: ./release-notes.txt
+          groups: 'alpha'
+          apkPath: app/build/outputs/apk/debug/app-debug.apk
+          firebaseToken: ${{ secrets.FIREBASE_TOKEN }}
