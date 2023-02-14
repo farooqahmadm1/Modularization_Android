@@ -6,7 +6,7 @@ digraph {
   # Projects
 
   ":android-components" [fillcolor="#baffc9"];
-  ":app" [shape=box, fillcolor="#baffc9"];
+  ":app" [fillcolor="#baffc9"];
   ":constants" [fillcolor="#ffb3ba"];
   ":core" [fillcolor="#baffc9"];
   ":rss:data" [fillcolor="#baffc9"];
@@ -14,7 +14,7 @@ digraph {
   ":rss:ui-feeds" [fillcolor="#baffc9"];
   ":rss:ui-stories" [fillcolor="#baffc9"];
 
-  {rank = same; ":app";}
+  {rank = same;}
 
   # Dependencies
 
