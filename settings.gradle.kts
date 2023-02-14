@@ -6,4 +6,4 @@ include(":rss:domain")
 include(":rss:data")
 include(":rss:ui-feeds")
 include(":rss:ui-stories")
-include ':constants'
+include(":constants")

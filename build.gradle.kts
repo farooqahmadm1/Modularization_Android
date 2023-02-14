@@ -18,20 +18,14 @@ buildscript {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}
-
 allprojects {
     repositories {
         google()
         gradlePluginPortal()
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
-        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
     }
 }
-
 
 apply {
     from("gradle/projectDependencyGraph.gradle")

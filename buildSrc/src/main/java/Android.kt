@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.dsl.DependencyHandler
-
 object Android {
     const val compileSdk = 33
     const val buildTools = "33.0.0"

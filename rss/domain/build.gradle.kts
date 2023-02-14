@@ -2,5 +2,5 @@ apply {
     from("$rootDir/android-library-build.gradle")
 }
 dependencies {
-    "api"(project(":core"))
+    "api"(project(Modules.core))
 }

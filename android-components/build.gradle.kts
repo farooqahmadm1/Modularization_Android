@@ -3,5 +3,5 @@ apply {
 }
 
 dependencies {
-    "api"(project(":constants"))
+    "api"(project(Modules.constants))
 }

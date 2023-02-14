@@ -9,16 +9,16 @@ plugins {
 
 android {
 
-    namespace = "com.farooq.module_demo"
-    compileSdk = 33
-    buildToolsVersion = "33.0.0"
+    namespace = Config.Application.applicationId
+    compileSdk = Android.compileSdk
+    buildToolsVersion = Android.buildTools
 
     defaultConfig {
-        applicationId = "com.farooq.module_demo"
-        minSdkVersion(21)
-        targetSdkVersion(33)
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Config.Application.applicationId
+        minSdkVersion(Android.minSdk)
+        targetSdkVersion(Android.targetSdk)
+        versionCode = Android.versionCode
+        versionName = Android.versionName
         multiDexEnabled = true
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         testInstrumentationRunner = "com.farooq.lastfm.MyTestRunner"
@@ -27,11 +27,11 @@ android {
         }
 
         buildTypes {
-            getByName("debug") {
+            getByName(Config.Variants.debug) {
                 isShrinkResources = false
                 isMinifyEnabled = false
             }
-            getByName("release") {
+            getByName(Config.Variants.release) {
                 isShrinkResources = true
                 isMinifyEnabled = true
             }
@@ -61,40 +61,40 @@ android {
 }
 
 dependencies {
-    implementation(project(":android-components"))
-    implementation(project(":rss:ui-feeds"))
-    implementation(project(":rss:ui-stories"))
-    implementation(project(":rss:data"))
+    implementation(project(Modules.components))
+    implementation(project(Modules.ui_rssFeeds))
+    implementation(project(Modules.ui_rssStories))
+    implementation(project(Modules.rssData))
 
     /**
      * GOOGLE
      * data <------ domain ----------->uifeeds -------> app
      *
      */
-    implementation("com.google.android.material:material:1.6.0")
-    implementation("com.google.code.gson:gson:2.8.9")
+    implementation(Google.material)
+    implementation(Google.gson)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha06")
-    testImplementation("com.google.truth:truth:1.0.1")
-    androidTestImplementation("com.google.truth:truth:1.0.1")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha02")
+    testImplementation(Google.truth)
+    androidTestImplementation(Google.truth)
 
 
     /**
      * Kotlin
      */
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.20")
+    implementation(Kotlin.kotlinStdlib)
 
     /**
      * Hilt
      */
-    implementation("com.google.dagger:hilt-android:2.43.2")
-    kapt("com.google.dagger:hilt-compiler:2.43.2")
-    androidTestImplementation("com.google.dagger:hilt-android-compiler:2.43.2")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.43.2")
+    implementation(Hilt.android)
+    kapt(Hilt.compiler)
+    androidTestImplementation(HiltTest.hiltAndroidTesting)
+    kaptAndroidTest(HiltTest.hiltKaptTesting)
 
-//    testImplementation(Junit.junit4)
-//    androidTestImplementation(Junit.junit4)
+    testImplementation(Junit.junit4)
+    androidTestImplementation(Junit.junit4)
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1")
 
 }
