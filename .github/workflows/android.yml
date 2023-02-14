@@ -23,6 +23,6 @@ jobs:
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           releaseNotesFile: ./release-notes.txt
-          groups: 'alpha'
-          apkPath: app/build/outputs/apk/debug/app-debug.apk
-          firebaseToken: ${{ secrets.FIREBASE_TOKEN }}
+          groups: alpha
+          file: app/build/outputs/apk/debug/app-debug.apk
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
